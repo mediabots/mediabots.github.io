@@ -83,7 +83,7 @@
     },
     {
       "id": "10",
-      "date": "iPhone X 64Gb Grey",
+      "date": "2017-09-18 05:57",
 	  "order": "200386",
 	  "name": "iPhone X 64Gb Grey",
 	  "price": "999.00",
@@ -119,15 +119,6 @@
     },
     {
       "id": "14",
-      "date": "2017-09-18 05:57",
-	  "order": "200386",
-	  "name": "iPhone X 64Gb Grey",
-	  "price": "999.00",
-	  "quantity" : "1",
-	  "total" : "$999.00"
-    },
-    {
-      "id": "15",
       "date": "2017-09-18 05:57",
 	  "order": "200386",
 	  "name": "iPhone X 64Gb Grey",
