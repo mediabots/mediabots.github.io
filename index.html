@@ -13,8 +13,8 @@
   <link rel="apple-touch-icon" type="image/x-icon" href="images/favicon.png"/>
   
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="js/lib/jquery.dataTables.js"></script>
   <title>datatables</title>
 
 </head>
@@ -40,26 +40,23 @@
 			</tr>
 		</tbody>
 	</table>-->
-	<div class="container pt-5" id="" role="tablist" aria-multiselectable="true">
+	<div class="container pt-5" role="tablist" aria-multiselectable="true">
 	<table class="display table table-responsive-md table-light table-striped table-border table-hover" id="example">
-		<!--<caption class="text-light">Product order details</caption>-->
         <thead class="thead-dark">
             <tr>
+                <th></th>
                 <th>Name</th>
                 <th>Position</th>
                 <th>Office</th>
-                <th>Extn.</th>
-                <th>Start date</th>
                 <th>Salary</th>
             </tr>
         </thead>
         <tfoot class="thead-dark">
             <tr>
+                <th></th>
                 <th>Name</th>
                 <th>Position</th>
                 <th>Office</th>
-                <th>Extn.</th>
-                <th>Start date</th>
                 <th>Salary</th>
             </tr>
         </tfoot>
@@ -74,12 +71,68 @@
 	</script>-->
 	<script src="js/lib/bootstrap.bundle.min.js"></script>
 	<script src="js/script.js"></script>
-	<script>
+	<!--<script>
 	$(document).ready(function() {
     $('#example').DataTable( {
         "ajax": "arrays.txt"
     } );
 } );
+	</script>-->
+	<script>
+	/* Formatting function for row details - modify as you need */
+	function format ( d ) {
+		// `d` is the original data object for the row
+		return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+			'<tr>'+
+				'<td>Full name:</td>'+
+				'<td>'+d.name+'</td>'+
+			'</tr>'+
+			'<tr>'+
+				'<td>Extension number:</td>'+
+				'<td>'+d.extn+'</td>'+
+			'</tr>'+
+			'<tr>'+
+				'<td>Extra info:</td>'+
+				'<td>And any further details here (images etc)...</td>'+
+			'</tr>'+
+		'</table>';
+	}
+	 
+	$(document).ready(function() {
+		var table = $('#example').DataTable( {
+			"ajax": "../ajax/data/objects.txt",
+			"columns": [
+				{
+					"className":      'details-control',
+					"orderable":      false,
+					"data":           null,
+					"defaultContent": ''
+				},
+				{ "data": "name" },
+				{ "data": "position" },
+				{ "data": "office" },
+				{ "data": "salary" }
+			],
+			"order": [[1, 'asc']]
+		} );
+		 
+		// Add event listener for opening and closing details
+		$('#example tbody').on('click', 'td.details-control', function () {
+			var tr = $(this).closest('tr');
+			var row = table.row( tr );
+	 
+			if ( row.child.isShown() ) {
+				// This row is already open - close it
+				row.child.hide();
+				tr.removeClass('shown');
+			}
+			else {
+				// Open this row
+				row.child( format(row.data()) ).show();
+				tr.addClass('shown');
+			}
+		} );
+	} );
 	</script>
 	
 </body>
