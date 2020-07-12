@@ -1,0 +1,34 @@
+
+button{
+	color: green !important;
+}
+button.collapsed{
+	color: grren !important;
+}
+button.active{
+	color: red !important;
+}
+
+
+/**/
+
+@font-face {
+  font-family: OpenSans-Regular;
+  src: url('../fonts/OpenSans/OpenSans-Regular.ttf'); 
+}
+
+.container-table100 {
+
+  background: #c850c0;
+  background: -webkit-linear-gradient(45deg, #4158d0, #c850c0);
+  background: -o-linear-gradient(45deg, #4158d0, #c850c0);
+  background: -moz-linear-gradient(45deg, #4158d0, #c850c0);
+  background: linear-gradient(45deg, #4158d0, #c850c0);
+  font-family: OpenSans-Regular;
+}
+tr{
+	line-height: 3em;
+}
+tr tr{
+	line-height: 1em !important;
+}
