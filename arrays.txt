@@ -25,7 +25,7 @@
 	  "name": "Game Console Controller",
 	  "price": "$22.00",
 	  "quantity" : "2",
-	  "total" : "$22.00"
+	  "total" : "$44.00"
     },
     {
       "id": "4",
